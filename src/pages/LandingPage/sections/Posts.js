@@ -24,7 +24,8 @@ function Places() {
           xs={12}
           lg={6}
           justifyContent="center"
-          sx={{ mx: "auto", textAlign: "center" }}
+          // eslint-disable-next-line prettier/prettier
+          sx={{ mx: "auto", textAlign: "center" , pb: 3}}
         >
           <MKTypography variant="h2">Our Team</MKTypography>
         </Grid>

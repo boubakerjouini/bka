@@ -26,7 +26,7 @@ import DefaultReviewCard from "examples/Cards/ReviewCards/DefaultReviewCard";
 
 function Information() {
   return (
-    <MKBox component="section" py={12}>
+    <MKBox component="section" py={{ xs: 6, md: 8 }}>
       <Container>
         <Grid
           container
@@ -38,7 +38,7 @@ function Information() {
         >
           <MKTypography variant="h2">Our Values</MKTypography>
         </Grid>
-        <Grid container spacing={3} sx={{ mt: 8 }}>
+        <Grid container spacing={3} sx={{ mt: 3 }}>
           <Grid item xs={12} md={6} lg={4}>
             <DefaultReviewCard
               name="Innovation"

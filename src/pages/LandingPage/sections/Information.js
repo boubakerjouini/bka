@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /*
 =========================================================
 * Material Kit 2 React - v2.1.0
@@ -26,7 +27,7 @@ import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard";
 
 function Information() {
   return (
-    <MKBox component="section" py={12}>
+    <MKBox component="section" py={{ xs: 6, md: 8 }}>
       <Container>
         <Grid
           container
@@ -34,7 +35,7 @@ function Information() {
           xs={12}
           lg={6}
           justifyContent="center"
-          sx={{ mx: "auto", textAlign: "center" }}
+          sx={{ mx: "auto", textAlign: "center" , pb: 5 }}
         >
           <MKTypography variant="h2">Our Practices</MKTypography>
         </Grid>

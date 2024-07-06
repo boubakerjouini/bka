@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /*
 =========================================================
 * Material Kit 2 React - v2.1.0
@@ -32,7 +33,6 @@ function Contact() {
             width="100%"
             bgColor="white"
             borderRadius="xl"
-            shadow="xl"
             mb={6}
             sx={{ overflow: "hidden" }}
           >
