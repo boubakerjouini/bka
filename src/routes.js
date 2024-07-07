@@ -45,26 +45,26 @@ const routes = [
   {
     name: "Our Practices",
     icon: <Icon>info</Icon>,
-    route: "/about-us",
-    component: <Information />,
+    route: "/our-practices",
+    component: <Information isHidden={true} showBackButton={true} />,
   },
   {
     name: "Our Team",
     icon: <Icon>location_on</Icon>,
     route: "/our-team",
-    component: <Places />,
+    component: <Places showBackButton={true} />,
   },
   {
     name: "Our Values",
     icon: <Icon>star</Icon>,
     route: "/our-values",
-    component: <Testimonials />,
+    component: <Testimonials showBackButton={true} />,
   },
   {
     name: "Contact Us",
     icon: <Icon>mail</Icon>,
     route: "/contact-us",
-    component: <Contact />,
+    component: <Contact showBackButton={true} />,
   },
 ];
 

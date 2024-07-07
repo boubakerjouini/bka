@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -21,6 +22,9 @@ import bgImage from "assets/images/desk.jpg";
 import Contact from "./sections/Contact";
 import Places from "./sections/Posts";
 import BuiltByDevelopers from "pages/LandingPage/sections/BuiltByDevelopers";
+import MKButton from "components/MKButton";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function AboutUs() {
   const handleCallUs = () => {
@@ -31,13 +35,6 @@ function AboutUs() {
     <>
       <DefaultNavbar
         routes={routes}
-        action={{
-          type: "external",
-          route: "tel:+1234567890", // Phone number prefixed with 'tel:'
-          label: "Call us today",
-          color: "default",
-          onClick: handleCallUs, // Attach onClick handler
-        }}
         transparent
         light
       />
@@ -81,6 +78,13 @@ function AboutUs() {
             <MKTypography variant="body1" color="white" opacity={0.8} mt={1} mb={3}>
               Avocats
             </MKTypography>
+            <MKButton
+              variant="gradient"
+              size="small"
+              onClick={handleCallUs}
+            >
+              Contact us today
+            </MKButton>
           </Grid>
         </Container>
       </MKBox>
@@ -93,11 +97,11 @@ function AboutUs() {
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
       >
-        <Information />
-        <Places />
-        <Testimonials />
+        <Information isHidden={false} showBackButton={false}/>
+        <Places showBackButton={false}/>
+        <Testimonials showBackButton={false}/>
         <BuiltByDevelopers />
-        <Contact />
+        <Contact showBackButton={false}/>
       </Card>
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />
