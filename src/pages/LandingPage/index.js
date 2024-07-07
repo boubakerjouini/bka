@@ -1,18 +1,3 @@
-/*
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
 // @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -41,6 +26,7 @@ function AboutUs() {
   const handleCallUs = () => {
     window.location.href = "tel:+1234567890"; // Replace with your phone number
   };
+
   return (
     <>
       <DefaultNavbar
@@ -90,10 +76,10 @@ function AboutUs() {
                 },
               })}
             >
-              The right lawyer
+              Beji Kassar Atallah
             </MKTypography>
             <MKTypography variant="body1" color="white" opacity={0.8} mt={1} mb={3}>
-              makes all the difference
+              Avocats
             </MKTypography>
           </Grid>
         </Container>

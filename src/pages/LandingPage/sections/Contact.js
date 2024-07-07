@@ -15,8 +15,10 @@ Coded by www.creative-tim.com
 */
 
 // @mui material components
+import React, { useRef } from "react";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
+import emailjs from "@emailjs/browser";
 
 // Material Kit 2 React components
 import MKBox from "components/MKBox";
@@ -25,6 +27,22 @@ import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 
 function Contact() {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_twwyjio', 'template_pc5jg5m', form.current, 'K2cIO12TZBnQsfaFv')
+      .then(
+        (result) => {
+          console.log('SUCCESS!', result.text);
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        }
+      );
+  };
+
   return (
     <MKBox component="section" py={{ xs: 0, lg: 6 }}>
       <Container>
@@ -66,7 +84,7 @@ function Contact() {
                 </MKBox>
               </Grid>
               <Grid item xs={12} lg={7}>
-                <MKBox component="form" p={2} method="post">
+                <MKBox component="form" ref={form} p={2} method="post" onSubmit={sendEmail}>
                   <MKBox px={3} py={{ xs: 2, sm: 6 }}>
                     <MKTypography variant="h2" mb={1}>
                       We&apos;d like to hear from you.
@@ -81,15 +99,30 @@ function Contact() {
                           placeholder="Full Name"
                           InputLabelProps={{ shrink: true }}
                           fullWidth
+                          name="user_name"
+                          required
                         />
                       </Grid>
                       <Grid item xs={12} pr={1} mb={6}>
                         <MKInput
                           variant="standard"
-                          label="I'm looking for"
-                          placeholder="What you love"
+                          label="Phone number"
+                          placeholder="Phone Number"
                           InputLabelProps={{ shrink: true }}
                           fullWidth
+                          name="phone"
+                          required
+                        />
+                      </Grid>
+                      <Grid item xs={12} pr={1} mb={6}>
+                        <MKInput
+                          variant="standard"
+                          label="Email"
+                          placeholder="Your Email"
+                          InputLabelProps={{ shrink: true }}
+                          fullWidth
+                          name="user_email"
+                          required
                         />
                       </Grid>
                       <Grid item xs={12} pr={1} mb={6}>
@@ -101,6 +134,8 @@ function Contact() {
                           fullWidth
                           multiline
                           rows={6}
+                          name="message"
+                          required
                         />
                       </Grid>
                     </Grid>
@@ -113,7 +148,7 @@ function Contact() {
                       textAlign="right"
                       ml="auto"
                     >
-                      <MKButton variant="gradient" color="info">
+                      <MKButton type="submit" variant="gradient" color="info">
                         Send Message
                       </MKButton>
                     </Grid>

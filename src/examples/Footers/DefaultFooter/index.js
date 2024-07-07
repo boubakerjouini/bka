@@ -38,9 +38,9 @@ function DefaultFooter({ content }) {
                 </Link>
                 <MKTypography variant="h6">{brand.name}</MKTypography>
               </MKBox>
-              <MKBox display="flex" alignItems="center" flexWrap="wrap">
+              <MKBox display="flex" flexDirection="column">
                 {phoneNumbers.map((number, index) => (
-                  <MKBox display="flex" alignItems="center" mr={2} key={index}>
+                  <MKBox display="flex" alignItems="center" mb={1} key={index}>
                     <Icon sx={{ mr: 1 }}>phone</Icon>
                     <MKTypography variant="body1">{number}</MKTypography>
                   </MKBox>

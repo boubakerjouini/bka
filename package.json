@@ -13,6 +13,7 @@
     "url": "git+https://github.com/creativetimofficial/ct-material-kit-react.git"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.3.3",
     "@emotion/cache": "11.10.7",
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
