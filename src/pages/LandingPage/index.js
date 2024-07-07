@@ -1,34 +1,27 @@
 /* eslint-disable prettier/prettier */
-// @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-
-// Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
-
-// Material Kit 2 React examples
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import DefaultFooter from "examples/Footers/DefaultFooter";
-
-// About Us page sections
-import Information from "pages/LandingPage/sections/Information";
-import Testimonials from "pages/LandingPage/sections/Testimonials";
+import Practices from "pages/LandingPage/sections/Practices";
+import Values from "pages/LandingPage/sections/Values";
 
 import routes from "routes";
 import footerRoutes from "footer.routes";
 import bgImage from "assets/images/desk.jpg";
 import Contact from "./sections/Contact";
-import Places from "./sections/Posts";
-import BuiltByDevelopers from "pages/LandingPage/sections/BuiltByDevelopers";
+import Team from "./sections/Team";
+import About from "pages/LandingPage/sections/AboutUs";
 import MKButton from "components/MKButton";
 import 'react-toastify/dist/ReactToastify.css';
 
 
 function AboutUs() {
   const handleCallUs = () => {
-    window.location.href = "tel:+1234567890"; // Replace with your phone number
+    window.location.href = "tel:+1234567890";
   };
 
   return (
@@ -97,11 +90,11 @@ function AboutUs() {
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
       >
-        <Information isHidden={false} showBackButton={false}/>
-        <Places showBackButton={false}/>
-        <Testimonials showBackButton={false}/>
-        <BuiltByDevelopers />
-        <Contact showBackButton={false}/>
+        <Practices isHidden={false} showBackButton={false} />
+        <Team showBackButton={false} />
+        <Values showBackButton={false} />
+        <About />
+        <Contact showBackButton={false} />
       </Card>
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter content={footerRoutes} />

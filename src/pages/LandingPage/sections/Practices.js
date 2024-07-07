@@ -1,31 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable prettier/prettier */
-/*
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-
-// Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKTypography from "components/MKTypography";
-
-// Material Kit 2 React examples
 import DefaultInfoCard from "examples/Cards/InfoCards/DefaultInfoCard";
 import MKButton from "components/MKButton";
 
@@ -36,7 +16,7 @@ function truncateText(text, length, isHidden) {
   return text;
 }
 
-function Information({ isHidden ,showBackButton}) {
+function Information({ isHidden, showBackButton }) {
   const practices = [
     {
       icon: "corporate_fare",
@@ -73,7 +53,7 @@ function Information({ isHidden ,showBackButton}) {
   return (
     <>
 
-{showBackButton && (
+      {showBackButton && (
         <Grid container justifyContent="flex-start" sx={{ mt: 4, ml: 4 }}>
           <Link href="/" underline="none">
             <MKButton>Back</MKButton>

@@ -1,22 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable prettier/prettier */
-/*
-=========================================================
-* Material Kit 2 React - v2.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-kit-react
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// @mui material components
 import React, { useRef, useState } from "react";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -26,15 +10,13 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import emailjs from "@emailjs/browser";
-
-// Material Kit 2 React components
 import MKBox from "components/MKBox";
 import MKInput from "components/MKInput";
 import MKButton from "components/MKButton";
 import MKTypography from "components/MKTypography";
 import { Link } from "@mui/material";
 
-function Contact({showBackButton}) {
+function Contact({ showBackButton }) {
   const form = useRef();
   const [open, setOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
@@ -63,7 +45,7 @@ function Contact({showBackButton}) {
 
   return (
     <>
-          {showBackButton && (
+      {showBackButton && (
         <Grid container justifyContent="flex-start" sx={{ mt: 4, ml: 4 }}>
           <Link href="/" underline="none">
             <MKButton>Back</MKButton>
@@ -186,7 +168,7 @@ function Contact({showBackButton}) {
           </Grid>
         </Container>
       </MKBox>
-      
+
       <Dialog
         open={open}
         onClose={handleClose}
@@ -203,7 +185,7 @@ function Contact({showBackButton}) {
           </Button>
         </DialogActions>
       </Dialog>
-      
+
       <style jsx global>{`
         @keyframes pop {
           0% {
