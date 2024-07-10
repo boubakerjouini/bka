@@ -31,8 +31,8 @@ export default function App() {
       <CssBaseline />
       <Routes>
         {getRoutes(routes)}
-        <Route path="/Landing" element={<AboutUs />} />
-        <Route path="*" element={<Navigate to="/Landing" />} />
+        <Route path="/" element={<AboutUs />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </ThemeProvider>
   );

@@ -26,10 +26,10 @@ function BuiltByDevelopers() {
     >
       <Container>
         <Grid container item xs={12} lg={6} sx={{ ml: { xs: 0, lg: 6 } }}>
-          <MKTypography variant="h4" color="#34476" fontWeight="bold">
+          <MKTypography variant="h4" color="#1e242d" fontWeight="bold">
             Our story is the story…{" "}
           </MKTypography>
-          <MKTypography variant="h" color="#34476" mb={1}>
+          <MKTypography variant="h" color="#1e242d" mb={1}>
             Of the love of the law<br />
             Of an innovative vision of the law<br />
             Of the aspiration to give the best<br />
@@ -39,7 +39,7 @@ function BuiltByDevelopers() {
             Of infallibility in the face of adversity<br />
             Of achieving excellence<br />
           </MKTypography>
-          <MKTypography variant="body1" color="#34476" opacity={0.8} mb={2}>
+          <MKTypography variant="body1" color="#1e242d"  mb={2}>
             Our history is that of a firm, a partner, a pillar, which gives each of its clients all
             the excellence, rigor, professionalism, flexibility and empathy that they expect from
             us.

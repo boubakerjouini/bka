@@ -2,12 +2,9 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable prettier/prettier */
 import React, { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogTitle from "@mui/material/DialogTitle";
-import Button from "@mui/material/Button";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import emailjs from "@emailjs/browser";
 import MKBox from "components/MKBox";
@@ -18,30 +15,39 @@ import { Link } from "@mui/material";
 
 function Contact({ showBackButton }) {
   const form = useRef();
-  const [open, setOpen] = useState(false);
-  const [modalMessage, setModalMessage] = useState("");
+  const [emailSent, setEmailSent] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-
+  const sendEmail = () => {
     emailjs.sendForm('service_twwyjio', 'template_pc5jg5m', form.current, 'K2cIO12TZBnQsfaFv')
       .then(
         (result) => {
           console.log('SUCCESS!', result.text);
-          setModalMessage('Email sent successfully!');
-          setOpen(true);
+          setEmailSent(true);
         },
         (error) => {
           console.log('FAILED...', error.text);
-          setModalMessage('Failed to send email. Please try again.');
-          setOpen(true);
         }
       );
   };
+
+  if (emailSent) {
+    return (
+      <MKBox display="flex" flexDirection="column" alignItems="center" justifyContent="center" mt={4}>
+        <CheckCircleIcon sx={{ color: "green", fontSize: 60, mb: 2 }} />
+        <MKTypography variant="h4" mb={2}>
+          Email sent successfully!
+        </MKTypography>
+        <Link href="/contact" underline="none">
+          <MKButton>Resend a message</MKButton>
+        </Link>
+      </MKBox>
+    );
+  }
 
   return (
     <>
@@ -71,8 +77,8 @@ function Contact({ showBackButton }) {
                   px={0}
                   sx={{
                     display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
+                    justifyContent:"center",
+                    alignItems:"center",
                   }}
                 >
                   <MKBox
@@ -92,7 +98,7 @@ function Contact({ showBackButton }) {
                   </MKBox>
                 </Grid>
                 <Grid item xs={12} lg={7}>
-                  <MKBox component="form" ref={form} p={2} method="post" onSubmit={sendEmail}>
+                  <MKBox component="form" ref={form} p={2} method="post" onSubmit={handleSubmit(sendEmail)}>
                     <MKBox px={3} py={{ xs: 2, sm: 6 }}>
                       <MKTypography variant="h2" mb={1}>
                         We&apos;d like to hear from you.
@@ -108,7 +114,9 @@ function Contact({ showBackButton }) {
                             InputLabelProps={{ shrink: true }}
                             fullWidth
                             name="user_name"
-                            required
+                            {...register("user_name", { required: "Full name is required" })}
+                            error={!!errors.user_name}
+                            helperText={errors.user_name?.message}
                           />
                         </Grid>
                         <Grid item xs={12} pr={1} mb={6}>
@@ -119,7 +127,15 @@ function Contact({ showBackButton }) {
                             InputLabelProps={{ shrink: true }}
                             fullWidth
                             name="phone"
-                            required
+                            {...register("phone", {
+                              required: "Phone number is required",
+                              pattern: {
+                                value: /^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/g,
+                                message: "Invalid phone number",
+                              },
+                            })}
+                            error={!!errors.phone}
+                            helperText={errors.phone?.message}
                           />
                         </Grid>
                         <Grid item xs={12} pr={1} mb={6}>
@@ -130,7 +146,15 @@ function Contact({ showBackButton }) {
                             InputLabelProps={{ shrink: true }}
                             fullWidth
                             name="user_email"
-                            required
+                            {...register("user_email", {
+                              required: "Email is required",
+                              pattern: {
+                                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i,
+                                message: "Invalid email address",
+                              },
+                            })}
+                            error={!!errors.user_email}
+                            helperText={errors.user_email?.message}
                           />
                         </Grid>
                         <Grid item xs={12} pr={1} mb={6}>
@@ -143,7 +167,9 @@ function Contact({ showBackButton }) {
                             multiline
                             rows={6}
                             name="message"
-                            required
+                            {...register("message", { required: "Message is required" })}
+                            error={!!errors.message}
+                            helperText={errors.message?.message}
                           />
                         </Grid>
                       </Grid>
@@ -156,7 +182,7 @@ function Contact({ showBackButton }) {
                         textAlign="right"
                         ml="auto"
                       >
-                        <MKButton type="submit" variant="gradient" color="info">
+                        <MKButton type="submit" outlined>
                           Send Message
                         </MKButton>
                       </Grid>
@@ -168,37 +194,6 @@ function Contact({ showBackButton }) {
           </Grid>
         </Container>
       </MKBox>
-
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title" sx={{ display: "flex", alignItems: "center" }}>
-          <CheckCircleIcon sx={{ color: "green", mr: 1, animation: "pop 0.5s ease-in-out" }} />
-          {modalMessage}
-        </DialogTitle>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary" autoFocus>
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
-
-      <style jsx global>{`
-        @keyframes pop {
-          0% {
-            transform: scale(0.5);
-          }
-          50% {
-            transform: scale(1.2);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-      `}</style>
     </>
   );
 }

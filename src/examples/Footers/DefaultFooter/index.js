@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 // react-router-dom components
 import { Link } from "react-router-dom";
 
@@ -42,7 +43,11 @@ function DefaultFooter({ content }) {
                 {phoneNumbers.map((number, index) => (
                   <MKBox display="flex" alignItems="center" mb={1} key={index}>
                     <Icon sx={{ mr: 1 }}>phone</Icon>
-                    <MKTypography variant="body1">{number}</MKTypography>
+                    <MKTypography variant="body1">
+                      <a href={`tel:${number}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                        {number}
+                      </a>
+                    </MKTypography>
                   </MKBox>
                 ))}
                 <MKBox display="flex" alignItems="center">

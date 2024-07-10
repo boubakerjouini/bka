@@ -33,6 +33,7 @@ function Information({ showBackButton }) {
           <Grid container spacing={3} sx={{ mt: 3 }}>
             <Grid item xs={12} md={6} lg={4}>
               <DefaultReviewCard
+              
                 name="Innovation"
                 review="Because law is a living and constantly evolving subject, our teams provide innovative
 and relevant legal solutions to optimally meet the needs of our clients."
